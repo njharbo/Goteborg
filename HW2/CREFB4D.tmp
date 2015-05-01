@@ -1,0 +1,392 @@
+\documentclass{scrartcl}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{float}
+%\usepackage{undertilde}
+%\usepackage{mathrsfs}
+\usepackage{epstopdf}
+\usepackage{listings}
+\usepackage{tabu}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs,caption,fixltx2e}
+\usepackage[flushleft]{threeparttable}
+%%\usepackage{courier}
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true, hidelinks]{hyperref}
+\usepackage[tmargin=1.1in,bmargin=1.1in,lmargin=1.45in,rmargin=1.45in]{geometry}
+
+%% User defined commands
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+	% Integrals
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+	% Symbols
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathcal{L}}
+	% Operators
+\newcommand{\Max}[2]{\max_{#1} \left\{ #2 \right\} } % Maximum
+\newcommand{\Min}[2]{\min_{#1} \left\{ #2 \right\} } % Minimum
+\newcommand{\Argmax}[2]{\argmax_{#1} \left\{ #2 \right\} }
+\newcommand{\Argmin}[2]{\argmin_{#1} \left\{ #2 \right\} }
+\newcommand{\Ln}[1]{\ln{ \left( #1 \right)} }
+\newcommand{\Sumt}{\sum_{t=0}^\infty }
+	% Statistics
+\newcommand{\E}[1]{\text{E} \left[ #1 \right]}
+\newcommand{\Var}[1]{\text{Var} \left( #1 \right)}
+\newcommand{\Cov}[1]{\text{Cov} \left( #1 \right)}
+\newcommand{\Y}{\utilde{Y}}
+\newcommand{\X}{\utilde{X}}
+\newcommand{\Z}{\utilde{Z}}
+\newcommand{\e}{\utilde{e}}
+\newcommand{\ML}[1]{\hat{1}_{\text{ML}}}
+	% Parantheses
+		% Normal
+\newcommand{\Le}{\left(}
+\newcommand{\Ri}{\right)}
+\newcommand{\Lep}{\left(}
+\newcommand{\Rip}{\right)}
+\newcommand{\lep}{\left(}
+\newcommand{\rip}{\right)}
+		% Curly
+\newcommand{\Lec}{\left\{}
+\newcommand{\Ric}{\right\}}
+\newcommand{\lec}{\left\{}
+\newcommand{\ric}{\right\}}
+		% Hard
+\newcommand{\Leh}{\left[}
+\newcommand{\Rih}{\right]}
+\newcommand{\leh}{\left[}
+\newcommand{\rih}{\right]}
+% commands
+\newcommand{\bal}{\begin{align}}
+\newcommand{\eal}{\end{align}}
+
+\definecolor{steelblue}{RGB}{64,134,170}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[LE,RO]{\thepage}
+\lhead{Macro 1 2015, Homework 2}
+\fancyfoot{}
+
+\title{Macroeconomics I}
+\subtitle{Homework 2 - Suggested solutions}
+\author{Niels-Jakob Harbo Hansen}
+\maketitle
+
+\section*{Introduction}
+If you find any errors or unclear sections in those answers, please help me and your classmates by emailing me at \url{jonna.olsson@ne.su.se}, or Niels-Jakob Harbo Hansen at \url{nielsjakobharbo.hansen@iies.su.se}. Please also send any of us an email if you have other questions! 
+
+Your homeworks will be handed back in the next seminar. If you want to get feed-back earlier, just send me an email. 
+
+\section*{Problem 1}
+
+\subsection*{Part (a)}
+
+\begin{itemize}
+	\item A \textbf{sequential competitive equilibrium} is a set of sequences for allocations $\left\{a_{it}^*, c_{it}^*\right\}_{t=0}^{\infty}$ und prices $\left\{q_{t}^*\right\}_{t=0}^{\infty}$ such that 
+	
+	\begin{enumerate}
+		\item $\left\{a_{it}^*, c_{it}^*\right\}_{t=0}^{\infty}$ solves the problem of the household:
+		\begin{align}
+		&\max_{\{{c_{i,t}, a_{i,t+1}}\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \text{ for i=1,2}\\
+		&\text{s.t. } \nonumber \\ 
+		&c_{it}+q_t^* a_{i,t+1}=e_{it}+a_{it} \forall t \nonumber \\
+		& \lim_{t \rightarrow \infty} \frac{a_{t+1}}{(1+r)^t} \geq 0 \nonumber \\
+		\end{align}
+		\item Markets clear
+		\begin{align}
+		\sum_{i} c_{it}^*&=\sum_{i} e_{it} \text{ } &\forall t
+		\sum_{i} a_{it}^*&=0 \text{ } \forall t 
+		\end{align}
+	\end{enumerate}
+	
+\end{itemize}
+
+\subsection*{Part (b)}
+
+\begin{itemize}
+	\item A \textbf{date-zero competitive equilibrium} is a set of sequences for allocations $\left\{c_{it}^*\right\}_{t=0}^{\infty}$ und prices $\left\{p_{t}^*\right\}_{t=0}^{\infty}$ such that 
+	
+	\begin{enumerate}
+		\item $\left\{c_{it}^*\right\}_{t=0}^{\infty}$ solves the problem of the household:
+		\begin{align}
+		&\max_{\{{c_{it}}\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \text{ for i=1,2}\\
+		&\text{s.t. } \sum_t p_{t} c_{it}=\sum_t p_{t} e_{it} \nonumber \\
+		\end{align}
+		\item Markets clear
+		\begin{align}
+		\sum_{i} c_{it}^*&=\sum_{i} e_{it}^* \text{ } \forall t
+		\end{align}
+	\end{enumerate}
+
+\end{itemize}
+
+\subsection*{Part (c)}
+
+\subsubsection*{Sequential equilibrium}
+
+\begin{itemize}
+	\item The Lagrangean for the Households problem reads
+	\begin{align}
+	L=\sum_{t} \beta^t u_{i} (c_{it})+\sum_t \lambda_{it} \left( c_{it}+q_t a_{i,t+1}-e_{it}-a_{it}\right)
+	\end{align}
+	\item The first order conditions become
+	\begin{align}
+	c_{it}: \beta^t u^\prime_i(c_it)+\lambda_{it}=0
+	a_{i,t+1}: \lambda_{it} q_t - \lambda_{it+1}=0
+	\end{align}
+	\item Combine to get
+	\begin{align}
+	\frac{q_t}{\beta}=\frac{u^\prime(c_{i,t+1})}{u^\prime(c_{i,t})} \forall i,t \label{eq:q}
+	\end{align}
+	\item This implies 
+	\begin{align}
+	\frac{u^\prime(c_{1,t+1})}{u^\prime(c_{1,t})}&=	\frac{u^\prime(c_{2,t+1})}{u^\prime(c_{2,t})} \\
+	\Rightarrow c_{i,t+1}&=c_{i,t}=c_i
+	\end{align}
+	\item Inserting into \eqref{eq:q} yields 
+	\begin{align}
+	q_t^*=\beta
+	\end{align}
+	\item Now note that the consolidated budget constraint, $\sum_t \left( \beta \right)^t c_{it}=\sum_t \left( \beta \right)^t e_{it}$ for agent 1 reads
+	\begin{align}
+	\sum_t \left( \beta \right)^t c_{1t}&=e_h+\left( \beta \right)e_l+\left( \beta \right)^2e_h+\dots \\
+	c_{1}\frac{1}{1-\beta}&=e_h\frac{1}{1-\beta^2}+e_l\beta\frac{1}{1-\beta^2}
+	\end{align}
+\item And for agent 2
+	\begin{align}
+	\sum_t \left( \beta \right)^t c_{2t}&=e_l+\left( \beta \right)e_h+\left( \beta \right)^2e_l+\dots \\
+	c_{2}\frac{1}{1-\beta}&=e_l\frac{1}{1-\beta^2}+e_h\beta\frac{1}{1-\beta^2}
+	\end{align}
+	\item Hence,
+		\begin{align}
+		c_{1}=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2} \\
+		c_{2}=e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{\beta(1-\beta)}{1-\beta^2} 
+		\end{align}
+	
+	\item Verify that this indeed is an equilibrium by checking whether $c_1$ and $c_2$ sum to $e_h+e_l$.
+	
+	\begin{align}
+	c_1+c_2&=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}+e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{\beta(1-\beta)}{1-\beta^2} \nonumber \\
+	&= e_h \frac{1-\beta+\beta(1-\beta)}{1-\beta^2}+e_l \frac{1-\beta+\beta(1-\beta)}{1-\beta^2} \nonumber \\
+	&=e_h+e_l
+	\end{align}
+		
+\end{itemize}
+
+\subsubsection*{Date-zero equilibrium}
+
+\begin{itemize}
+	\item The Lagrangean reads
+	
+		\begin{align}
+	L=\sum_{t} \beta^t u_{i} (c_{it})+ \lambda_{i} \sum_t \left( p_t c_{it}-p_t e_{it}\right)
+	\end{align}
+	
+	\item Yields the first order condtions
+	\begin{align}
+	c_{1t}: \beta^t u^{\prime}(c_{1t})-\lambda_1 p_t=0  \text{ } \forall t\\
+	c_{2t}: \beta^t u^{\prime}(c_{2t})-\lambda_2 p_t=0 \text{ } \forall t
+	\end{align}
+	
+	\item From this we get
+	
+	\begin{align}
+	\frac{u^{\prime}(c_{1,t+1})}{u^{\prime}(c_{1,t})}=\frac{u^{\prime}(c_{2,t+1})}{u^{\prime}(c_{2,t})}=\frac{p_{t+1}}{\beta p_{t}}
+	\end{align}
+	
+	\item By similar argument from above we then get
+	\begin{align}
+	c_{i,t}=c_{i,t+1}
+	\end{align}
+	\item And then
+	\begin{align}
+	\frac{p_{t+1}}{p_{t}}=\beta
+	\end{align}
+	
+	\item Now use this in agent 1's budget constraint:
+	
+	\begin{align}
+	c_1 \sum_t p_t = \sum_t p_t e_{1}  \\
+	c_1 \left( p_0+ p_1 + p_2 + ... \right)= \left( e_h p_0+ e_l p_1 + e_h p_2 + ... \right)
+	\end{align}
+	
+	\item And notice
+
+	\begin{align}
+	&p_1 = \frac{p_1}{p_0} p_0 = \beta p_0 \\
+	&p_2 = \frac{p_2}{p_1} p_1 = \beta \beta p_0 \\
+	&... \\
+	&p_t =  \beta^t p_0
+	\end{align}
+	
+	\item Let $p_0=1$ (numeraire) and use this in the budget constraint of the consumer to get
+	
+	\begin{align}
+	&c_1 \sum_t \beta^t= e_h (1+\beta^2+\beta^4+...)+ \beta e_l (1+\beta^2+\beta^4+...) \nonumber \\
+	&\frac{c_1}{1-\beta}=\frac{e_h}{1-\beta^2}+\frac{\beta e_l}{1-\beta^2} \nonumber \\
+	&c_{1}=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}
+	\end{align}
+	
+	\item And likewise
+	\begin{align}
+	&c_{2}=e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{\beta(1-\beta)}{1-\beta^2}
+	\end{align}
+	
+
+\item TBD: Intution
+
+\end{itemize}
+
+\subsection*{Part (d)}
+
+\begin{itemize}
+	\item We know from above that
+
+	\begin{align}
+	\frac{u^{\prime}(c_{1,t+1})}{u^{\prime}(c_{1,t})}=\frac{u^{\prime}(c_{2,t+1})}{u^{\prime}(c_{2,t})}
+	\end{align}
+
+\item Under the given preferences this implies
+
+	\begin{align}
+	\frac{c_{1,t}}{c_{1,t+1}}=1 \Rightarrow c_{1,t}=c_{1,t+1}
+	\end{align}
+
+\item Now the consolidated budget constraint of each agent reads
+
+\begin{align}
+\sum_t \beta^t c_{i,t}= e_l+\beta e_h+ \beta^2 e_l+...\\
+\sum_t \beta^t c_{i,t}=\frac{e_l}{1-\beta^2}+\frac{e_h \beta}{1-\beta^2}
+\end{align}
+
+\item For agent 1 this implies
+\begin{align}
+\frac{c_1}{1-\beta}=\frac{e_l}{1-\beta^2}+\frac{e_h \beta}{1-\beta^2} \Rightarrow c_1=e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{ \beta(1-\beta)}{1-\beta^2}
+\end{align}
+
+\item Via market clearing this then implies
+
+\begin{align}
+c_{2,t=odd}=2e_h-c_1=e_h\frac{2-\beta^2-\beta}{1-\beta^2}-e_l\frac{1-\beta}{1-\beta^2} \\
+c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2*\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1-\beta)}{1-\beta^2}
+\end{align}
+
+\item TBD: Intution
+
+\end{itemize}
+
+
+\section*{Problem 2}
+
+\subsection*{Part (a)}
+
+\begin{itemize}
+	\item A \textbf{sequential equilibrium} is a set of sequences for allocations $\left\{ k_{it}^*, k_{ct}^*, k_{t}^*, n_{it}^*, n_{ct}^*, c_{t}^*, i_{t}^* \right\}_{t=0}^{\infty}$ and prices $\left\{ p_t^*, r^*_t, w^*_t  \right\}_{t=0}^{\infty}$ such that:
+	\begin{enumerate}
+		\item $\left\{c_{t}^*, i_{t}^*, k_{t}^*  \right\}_{t=0}^{\infty}$ solves the household's problem:
+		\begin{align}
+		&\max_{\{{c_t, i_t}\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \\
+		&\text{s.t. } c_t+p_t^* i_t=r^*_t k_t+w_t^* n_t \nonumber \\
+		k_{t+1}=(1-\delta)k_t+i_t \label{eq:kacc} \nonumber
+		\end{align}
+		
+	\item $\left\{k_{ct}^*, k_{ct}^*  \right\}_{t=0}^{\infty}$ solves problem of consumption good firm:
+	
+		\begin{align}
+		&\max_{k_{ct}, n_{ct}} {A_t^{1-\alpha}k_{ct}^\alpha n_{ct}^{\alpha}-r_t^* k_{ct}-w_{t}^* n_{ct}} \text{ }\forall t
+		\end{align}
+		
+	\item $\left\{k_{it}^*, k_{it}^*  \right\}_{t=0}^{\infty}$ solves problem of the investment good firm:
+	
+		\begin{align}
+		&\max_{k_{it}, n_{it}} {A_t^{1-\alpha}k_{it}^\alpha n_{it}^{\alpha}-r_t^* k_{it}-w_{t}^* n_{it}} \text{ }\forall t
+		\end{align}
+		
+		\item And market clearing (feasibility) holds
+		
+		\begin{align}
+		n_{it}+n_{ct}=n_{t} \label{eq:nclearing} \\
+		k_{it}+k_{ct}=k_{t} \label{eq:kclearing} \\
+		\end{align}
+		
+	\end{enumerate}
+	
+\end{itemize}
+
+\subsection*{Part (b)}
+
+\begin{itemize}
+	\item Take first order conditions to firms problem to get
+	
+	\begin{align}
+	\alpha A_t ^{1-\alpha} k_{ct}^{\alpha-1} n_{ct}^{1-\alpha}=r_t^* \label{eq:foc1} \\
+	(1-\alpha) A_t ^{1-\alpha} k_{ct}^{\alpha} n_{ct}^{-\alpha}=w_t^* \label{eq:foc2} \\
+	p_t q_t \alpha A_t ^{1-\alpha} k_{it}^{\alpha-1} n_{it}^{1-\alpha}=r_t^* \label{eq:foc3} \\
+	p_t q_t (1-\alpha) A_t ^{1-\alpha} k_{it}^{\alpha} n_{it}^{-\alpha}=w_t^* \label{eq:foc4}
+	\end{align}
+	
+	\item Divide \eqref{eq:foc1} by \eqref{eq:foc2} and \eqref{eq:foc3} by \eqref{eq:foc4} and equate to get
+	\begin{align}
+	\frac{n_{ct}}{k_{ct}}=\frac{r^*_t}{w^*_t}=\frac{n_{it}}{k_{it}} \label{eq:nk}
+	\end{align}
+	
+	\item Then divide \eqref{eq:foc3} by \eqref{eq:foc1} and use \eqref{eq:nk} to get
+	\begin{align}
+	p_t q_t \left(\frac{k_{it}}{k_{ct}}\right)^{\alpha-1} \left(\frac{n_{it}}{n_{ct}}\right)^{1-\alpha}&=1 \nonumber \\
+	\Rightarrow p_t q_t \left( \frac{k_{it}}{n_{it}}\right)^{\alpha-1} \left( \frac{k_{ct}}{n_{ct}}\right)^{1-\alpha}&=1 \nonumber \\
+	\Rightarrow p_t &= 1/q_t \label{eq:pq}
+	\end{align}
+
+	
+\end{itemize}
+
+\subsection*{Part (c)}
+
+
+\begin{itemize}
+
+\item Start by noting from \eqref{eq:nk} that $k_{it}/k_{ct}=n_{it}/n_{ct}=$ why we can write: 
+\begin{align}
+k_{it}&=sk_{t} \\
+n_{it}&=sn_{t} \\
+k_{ct}&=(1-s)k_{t} \\
+n_{ct}&=(1-s)n_{t} 
+\end{align}
+
+\item Use this in \eqref{eq:foc1} and \eqref{eq:foc2} to get
+\begin{align}
+r_t^*&=\alpha A_t^{1-\alpha} \left( s k_t \right)^{\alpha-1} \left( s n_t \right)^{1-\alpha} \nonumber \\
+\Rightarrow r_t^*&= s^{\alpha-1+1-\alpha} \alpha A_t^{1-\alpha}  k_t ^{\alpha-1} n_t^{1-\alpha} \nonumber \\
+\Rightarrow r_t^*&= s^{0} \alpha A_t^{1-\alpha}  k_t ^{\alpha-1} n_t^{1-\alpha} \label{eq:r} \\
+w_t^*&=(1-\alpha) A_t ^{1-\alpha} \left( s k_{t} \right)^{\alpha} \left( s  n_{t} \right)^{-\alpha} \nonumber \\
+\Rightarrow w_t^*&=s^{0} (1-\alpha) A_t ^{1-\alpha} k_{t}^{\alpha}   n_{t} ^{-\alpha} \label{eq:w}
+\end{align}
+
+	\item Then plug \eqref{eq:r} and \eqref{eq:w} along \eqref{eq:pq} with  into the budget constraint of the household to get
+	\begin{align}
+	c_t+\frac{1}{q_t} i_t&=\alpha A_t^{1-\alpha}  k_t ^{\alpha-1} n_t^{1-\alpha} k_t+  (1-\alpha) A_t ^{1-\alpha} k_{t}^{\alpha}   n_{t} ^{-\alpha} n_t \nonumber \\
+	\Rightarrow c_t+\frac{1}{q_t} i_t&= A_t^{1-\alpha}  k_t ^{\alpha} n_t^{1-\alpha} \\
+	\end{align}
+	
+	\item Hence, the problem of the social planner can be written 
+		\begin{align}
+		&\max_{\{{c_t^*,i_t^* }\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \\
+		&\text{s.t. } \nonumber \\
+		&c_t+\frac{1}{q_t} i_t=A_t^{1-\alpha} k_t^{\alpha} n_t^{1-\alpha} \nonumber \\
+		&k_{t+1}=(1-\delta)k_t+i_t \nonumber
+		\end{align}
+	
+\end{itemize}
+
+\end{document}

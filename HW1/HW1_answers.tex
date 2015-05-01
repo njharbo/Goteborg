@@ -1,0 +1,369 @@
+\documentclass{scrartcl}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{float}
+%\usepackage{undertilde}
+%\usepackage{mathrsfs}
+\usepackage{epstopdf}
+\usepackage{listings}
+\usepackage{tabu}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs,caption,fixltx2e}
+\usepackage[flushleft]{threeparttable}
+%%\usepackage{courier}
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true, hidelinks]{hyperref}
+\usepackage[tmargin=1.1in,bmargin=1.1in,lmargin=1.45in,rmargin=1.45in]{geometry}
+
+%% User defined commands
+\newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
+	% Integrals
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+	% Symbols
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\LL}{\mathcal{L}}
+	% Operators
+\newcommand{\Max}[2]{\max_{#1} \left\{ #2 \right\} } % Maximum
+\newcommand{\Min}[2]{\min_{#1} \left\{ #2 \right\} } % Minimum
+\newcommand{\Argmax}[2]{\argmax_{#1} \left\{ #2 \right\} }
+\newcommand{\Argmin}[2]{\argmin_{#1} \left\{ #2 \right\} }
+\newcommand{\Ln}[1]{\ln{ \left( #1 \right)} }
+\newcommand{\Sumt}{\sum_{t=0}^\infty }
+	% Statistics
+\newcommand{\E}[1]{\text{E} \left[ #1 \right]}
+\newcommand{\Var}[1]{\text{Var} \left( #1 \right)}
+\newcommand{\Cov}[1]{\text{Cov} \left( #1 \right)}
+\newcommand{\Y}{\utilde{Y}}
+\newcommand{\X}{\utilde{X}}
+\newcommand{\Z}{\utilde{Z}}
+\newcommand{\e}{\utilde{e}}
+\newcommand{\ML}[1]{\hat{1}_{\text{ML}}}
+	% Parantheses
+		% Normal
+\newcommand{\Le}{\left(}
+\newcommand{\Ri}{\right)}
+\newcommand{\Lep}{\left(}
+\newcommand{\Rip}{\right)}
+\newcommand{\lep}{\left(}
+\newcommand{\rip}{\right)}
+		% Curly
+\newcommand{\Lec}{\left\{}
+\newcommand{\Ric}{\right\}}
+\newcommand{\lec}{\left\{}
+\newcommand{\ric}{\right\}}
+		% Hard
+\newcommand{\Leh}{\left[}
+\newcommand{\Rih}{\right]}
+\newcommand{\leh}{\left[}
+\newcommand{\rih}{\right]}
+
+\definecolor{steelblue}{RGB}{64,134,170}
+
+\begin{document}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[LE,RO]{\thepage}
+\lhead{Macro 1 2015, Homework 1}
+\fancyfoot{}
+
+\title{Macroeconomics I}
+\subtitle{Homework 1 - Suggested solutions}
+\author{Jonna Olsson}
+\maketitle
+
+\section*{Introduction}
+If you find any errors or unclear sections in those answers, please help me and your classmates by emailing me at \url{jonna.olsson@ne.su.se}, or Niels-Jakob Harbo Hansen at \url{nielsjakobharbo.hansen@iies.su.se}. Please also send any of us an email if you have other questions! 
+
+Your homeworks will be handed back in the next seminar. If you want to get feed-back earlier, just send me an email. 
+
+
+\section*{Problem 1 (max 4 points)}
+
+\subsection*{Part (a)}
+The borrowing restriction we are given is: 
+\[
+	\lim_{t \rightarrow \infty} \frac{a_{t+1}}{(1+r-\delta)^t} \geq 0
+\]
+In present value terms, it means that the agent cannot engage in borrowing and lending so that her ``terminal asset holdings'' are negative -- that would mean borrowing and not being able to pay back. 
+
+This condition rules out the situation when the agent never repays her debt (or, equivalently, postpones repayment indefinitely) and is called the no-Ponzi-game (nPg) condition. 
+
+\subsection*{Part (b)}
+From now on, I will use $R=(1+r-\delta)$ in the equations, just to simplify the expressions and hopefully make it somewhat clearer. 
+
+With some practice you will write the present-value budget constraint without explicitly stating all the following steps, but it is good to at least once in a while think of what is actually going on. Start by looking at the per-period budget constraint for period $0$: 
+\begin{gather*}
+	c_0 + a_1 = w_0(T-\ell_0) + Ra_0 \qquad \Rightarrow \qquad
+	a_1 = w_0(T-\ell_0) + Ra_0 - c_0
+\end{gather*}
+Using this in the per-period budget constraint for the next period, when $t=1$, gives us: 
+\begin{gather*}
+	c_1 + a_2 = w_1(T-\ell_1) + Ra_1 \qquad \Rightarrow \qquad \\
+	c_1 + a_2 = w_1(T-\ell_1) + R\big( w_0(T-\ell_0) + Ra_0 - c_0 \big) \qquad \Rightarrow \\
+	c_1 + Rc_0 + a_2 = w_1(T-\ell_1) + R w_0(T-\ell_0) + R^2a_0 \qquad \Rightarrow \\
+	a_2 = w_1(T-\ell_1) + R w_0(T-\ell_0) + R^2a_0 - (c_1 + Rc_0)
+\end{gather*}
+Again, substituting in $a_2$ in the per-period budget constraint for $t=2$, 
+\begin{gather*}
+	c_2 + a_3 = w_2(T-\ell_2) + Ra_2 \qquad \Rightarrow \qquad \\
+	c_2 + a_3 = w_2(T-\ell_2) + R\Big( w_1(T-\ell_1) + R w_0(T-\ell_0) + R^2a_0 - (c_1 + Rc_0) \Big) \qquad \Rightarrow \\
+	c_2 + Rc_1 + R^2c_0 + a_3 = w_2(T-\ell_2) + Rw_1(T-\ell_1) + R^2 w_0(T-\ell_0) + R^3a_0 
+\end{gather*}
+Multiplying everything by $1/R^2$ (i.e. discounting it back to present value) and rewriting it with sums, we get: 
+\begin{align*}
+	\sum_{t=0}^{2} \lep\frac{1}{R} \rip^t c_t + \lep\frac{1}{R} \rip^2 a_{2+1} = R a_0 + \sum_{t=0}^{2} \lep\frac{1}{R} \rip^t w_t(T-\ell_t)
+\end{align*}
+By repeated substitution up until time $t=T$ we have, 
+\begin{align*}
+	\sum_{t=0}^{T} \lep\frac{1}{R} \rip^t c_t + \lep\frac{1}{R} \rip^T a_{T+1} = a_0 R + \sum_{t=0}^{T} \lep\frac{1}{R} \rip^t w_t(T-\ell_t)
+\end{align*}
+Taking limits, the left-hand side of the above equation then becomes, 
+\begin{align*}
+	& \lim_{T\rightarrow \infty} \lep \sum_{t=0}^{T} \lep\frac{1}{R} \rip^t c_t + \lep\frac{1}{R} \rip^T a_{T+1} \rip \\
+	=& \lim_{T\rightarrow \infty} \lep \sum_{t=0}^{T} \lep\frac{1}{R} \rip^t c_t \rip +   
+	\lim_{T\rightarrow \infty} \lep \lep \frac{1}{R} \rip^T a_{T+1} \rip \\
+	=& \sum_{t=0}^{\infty} \lep\frac{1}{R} \rip^t c_t +   
+	\underbrace{\lim_{T \rightarrow \infty} \lep \frac{a_{T+1}}{R^T} \rip}_{\geq 0}   
+\end{align*}
+Now we can write the life-time budget constraint as (noting that $a_0 = 0$), 
+\begin{align*}
+	\sum_{t=0}^{\infty} \lep\frac{1}{R} \rip^t c_t \leq \sum_{t=0}^{\infty} \lep\frac{1}{R} \rip^t w_t(T-\ell_t)
+\end{align*}
+We here see the present value of all consumption equaling the present value of all labor income. Equivalently, we can write this as: 
+\begin{align*}
+	\sum_{t=0}^{\infty} \lep\frac{1}{R} \rip^t c_t + \sum_{t=0}^{\infty} \lep\frac{1}{R} \rip^t w_t \ell_t \leq \sum_{t=0}^{\infty} \lep\frac{1}{R} \rip^t w_tT
+\end{align*}
+In this formulation the present value of all consumption plus the present value of all leisure time equals the present value of all time the consumer has. 
+\subsection*{Part (c)}
+The consumer's maximization problem is
+\begin{gather}
+	\max_{\{c_t, \ell_t\}_{t=0}^{\infty}} 
+	\sum_{t=0}^{\infty} \beta^t \frac{(c_tv(\ell_t))^{1-\sigma}-1}{1-\sigma}\\
+	\text{s.t } \sum_{t=0}^{\infty} \lep\frac{1}{R} \rip^t c_t + 
+	\sum_{t=0}^{\infty} \lep\frac{1+g}{R} \rip^t w \ell_t = 
+	\sum_{t=0}^{\infty} \lep\frac{1+g}{R} \rip^t w T \label{eq:1_bc}\\
+	c_t, \ell_t \geq 0
+\end{gather}
+Note that I here have used the fact that $w_t = w(1+g)^t$ (but you could of course keep $w_t$ and make that substitution later). 
+
+\subsection*{Part (d)}
+We set up the Lagrangian: 
+\begin{align*}
+	\mathcal{L} = 
+	\sum_{t=0}^{\infty} \beta^t \frac{(c_tv(\ell_t))^{1-\sigma}-1}{1-\sigma} + 
+	\lambda \lep\sum_{t=0}^{\infty} \lep\frac{1+g}{R} \rip^t w T - \sum_{t=0}^{\infty} \lep\frac{1}{R} \rip^t c_t - 
+	\sum_{t=0}^{\infty} \lep\frac{1+g}{R} \rip^t w \ell_t \rip
+\end{align*}
+Thereafter, we take the first-order conditions with respect to consumption at time $t$ and $t+1$: 
+\begin{align}
+	\frac{\partial \mathcal{L}}{\partial c_t} &= 
+	\beta^t \lep c_tv(\ell_t) \rip^{-\sigma}v(\ell_t) - \lambda \lep \frac{1}{R}\rip^t = 0 \label{eq:1_FOC_ct}\\
+	\frac{\partial \mathcal{L}}{\partial c_{t+1}} &= 
+	\beta^{t+1} \lep c_{t+1}v(\ell_{t+1}) \rip^{-\sigma}v(\ell_{t+1}) - \lambda \lep \frac{1}{R}\rip^{t+1} = 0 
+\end{align}
+Substituting out $\lambda$ we get the Euler Equation (or rather one of many ways to express it): 
+\begin{gather} 
+	\lep c_tv(\ell_t) \rip^{-\sigma}v(\ell_t) = \beta R \lep c_{t+1}v(\ell_{t+1}) \rip^{-\sigma}v(\ell_{t+1}) \label{eq:1_EE}
+\end{gather}
+
+\subsection*{Part (e)}
+We take the first-order condition with respect to leisure at time $t$: 
+\begin{align}
+	\frac{\partial \mathcal{L}}{\partial \ell_t} &= 
+	\beta^t \lep c_tv(\ell_t) \rip^{-\sigma}c_t v'(\ell_t) - \lambda \lep \frac{1+g}{R}\rip^t w = 0 
+\end{align}
+Combining this with \eqref{eq:1_FOC_ct} and substituting out $\lambda$ we get the condition guiding the choice between consumption and leisure in period $t$: 
+\begin{align} \label{eq:1_intratemp}
+	\frac{c_t v'(\ell_t)}{v(\ell_t)} = w(1+g)^t
+\end{align}
+
+\subsection*{Part (f)}
+We are now asked to show that the first-order conditions are satisfied if consumption grows at (net) rate $g$ at all times, i.e. that $c_t = c(1+g)^t ~ \forall t$, and if leisure is constant over time, i.e. that $\ell_t = \ell ~ \forall t$. We start with \eqref{eq:1_EE}, which then reads: 
+\begin{align*} \label{eq:1_lookatgrowth}
+	(c(1+g)^t v(\ell))^{-\sigma}v(\ell) &= \beta R (c(1+g)^{t+1}v(\ell))^{-\sigma}v(\ell) ~ \Rightarrow \\
+		1 &= \beta R (1+g)^{-\sigma}
+\end{align*}
+We are given that $1+g = (\beta R)^{\frac{1}{\sigma}}$. Using this, we have confirmed that our Euler equation holds. 
+
+Next step is to check \eqref{eq:1_intratemp}, which then reads: 
+\begin{align}
+	\frac{v'(\ell)}{v(\ell)} &= \frac{w(1+g)^t}{c(1+g)^t} ~ \Rightarrow \\
+	\frac{v'(\ell)}{v(\ell)} &= \frac{w}{c} \label{eq:1_intratemp_constant}
+\end{align}
+Hence, we have confirmed that a constant $\ell$ and consumption growing at net rate $g$ is a solution to both first-order conditions. 
+
+\subsection*{Part (g)}
+I choose $v(\ell) = \ell^{1/2}$, which gives me $v'(\ell) = \frac{\ell^{-1/2}}{2}$.\footnote{The function $v(\ell) = \ell^{1/2}$ is clearly strictly increasing and continuously differentiable. Moreover, we are supposed to choose a function that makes $cv(\ell)$ strictly quasiconcave. Remember the definition of that? Suppose $X \subset \mathbb{R}^n$ is convex. A function $f: X \rightarrow \mathbb{R}$ is strictly quasiconcave if $f[\lambda x + (1-\lambda)x'] > \min \{f(x), f(x')\}$ for all $\lambda \in ]0,1[$ and $x, x' \in X$. This is another way of saying that we require the consumer to have convex preferences.} Plugging this into \eqref{eq:1_intratemp_constant} gives
+\begin{align}
+	\frac{\ell^{-1/2}}{2\ell^{1/2}} &= \frac{w}{c} \qquad \Rightarrow \qquad
+	c = 2\ell w \label{eq:1_cw1}
+\end{align}
+Next step is to look at the consolidated budget constraint, \eqref{eq:1_bc}. Using $c_t = c(1+g)^t$ and the fact that we now know that $\ell_t = \ell ~ \forall t$ in that, we get: 
+\begin{gather}
+	\sum_{t=0}^{\infty} \lep\frac{1+g}{R} \rip^t c + 
+	\sum_{t=0}^{\infty} \lep\frac{1+g}{R} \rip^t w \ell = 
+	\sum_{t=0}^{\infty} \lep\frac{1+g}{R} \rip^t w T \qquad \Rightarrow \\
+	c + w\ell = wT \label{eq:1_cw2}
+\end{gather}
+Combining \eqref{eq:1_cw1} and \eqref{eq:1_cw2}, we solve for $c$ and $\ell$: 
+\begin{equation}
+	\ell = \frac{1}{3}T \qquad c = \frac{2}{3}Tw \label{eq:1_c_and_l}
+\end{equation}
+Which gives us $c_t = \frac{2}{3}Tw(1+g)^t$ as the level of consumption at time $t$. 
+Hence we will always devote a constant fraction of our time to leisure, while the rest of the time we work and earn our wage, which we use to consume. 
+
+\subsection*{Part (h)}
+We saw from our answer to subquestion (f) that if we assume a constant labor supply, the consumption must grow at rate $(\beta R)^{\frac{1}{\sigma}}$ for the Euler equation to hold. What if wages grow faster than this (still assuming a constant labor supply)? 
+
+Remember that the life-time budget constraint still must hold. The household would choose to borrow to consume relatively more compared to its income in the beginning, and at some point start paying back its debt (consuming less than its wage income). And vice versa if wages grow slower than consumption -- then the household would have to save in the beginning to be able to ``afford'' the higher consumption growth. 
+
+However, looking at \eqref{eq:1_intratemp_constant}, we see that if the growth rate of consumption would be different than the growth rate of wages, the leisure choice cannot be constant. 
+
+Hence, we can conclude that if consumption grows at any other rate than the same as the growth rate of wages, we cannot have a constant labor supply. Any other growth rate is thus not consistent with a balanced growth path. 
+
+\subsection*{Part (i)}
+The savings rate in period $t$ is defined by
+\begin{equation}
+	s_t = \frac{a_{t+1} - Ra_t}{w_t(T-\ell)} 
+	\qquad \lep \text{ or} \quad
+	1-s_t = \frac{c_t}{w_t(T-\ell)} \rip \label{eq:1_savrate}
+\end{equation}
+
+Our per-period budget constraint is 
+\begin{equation*}
+	c_t + a_{t+1} = w_t(T-\ell) + Ra_t
+\end{equation*}
+We plug in our solutions from previous subquestions (given by \eqref{eq:1_c_and_l}) into the per-period budget constraint and get
+\begin{align*}
+	(1+g)^t\frac{2}{3}wT + a_{t+1} &= (1+g)^t w \frac{2}{3}T + Ra_t \quad \Rightarrow \\
+	a_{t+1} &= Ra_t
+\end{align*}
+Using this in \eqref{eq:1_savrate} we see that $s_t = s = 0 ~ \forall t$. 
+
+\section*{Problem 2 (max 3 points)}
+
+\subsection*{Part (a)}
+The social planner solves the problem 
+\begin{gather*}
+	\max_{\{c_t, \ell_t, k_{t+1}\}_{t=0}^{\infty}} 
+	\sum_{t=0}^{\infty} \beta^t \leh \log (c_t) + \theta \log (\ell_t) \rih \\
+	\text{s.t } c_t + k_{t+1} = (1-\delta)k_t + A_t^{1-\alpha} k_t^\alpha (T-\ell_t)^{1-\alpha} \\
+	c_t, \ell_t, k_{t+1} \geq 0
+\end{gather*}
+\subsection*{Part (b)}
+The social planner's Lagrangian is:\footnote{I have from here onward used that $\delta=1$ and thereby got rid of one term in the resource constraint. }  
+\begin{align*}
+	\mathcal{L} = \sum_{t=0}^{\infty} \Big( \beta^t \leh \log (c_t) + \theta \log (\ell_t) \rih + \lambda_t \lep A_t^{1-\alpha} k_t^\alpha (T-\ell_t)^{1-\alpha} - c_t - k_{t+1}\rip \Big)
+\end{align*}
+We take first order conditions and get
+\begin{align*}
+	\frac{\partial \mathcal{L}}{\partial c_t} &= 
+	\frac{\beta^t}{c_t} - \lambda_t = 0 \\
+	\frac{\partial \mathcal{L}}{\partial \ell_t} &= 
+	\frac{\beta^t \theta}{\ell_t} - \lambda_t (1-\alpha) A_t^{1-\alpha} k_t^\alpha (T-\ell_t)^{-\alpha} = 0 \\
+	\frac{\partial \mathcal{L}}{\partial k_{t+1}} &= 
+	-\lambda_t + \lambda_{t+1} \alpha A_{t+1}^{1-\alpha} k_{t+1}^{\alpha-1} (T-\ell_{t+1})^{1-\alpha} = 0 
+\end{align*}
+Substituting out $\lambda_t, \lambda_{t+1}$, we get
+\begin{align}
+	\frac{1}{c_t} &= \frac{1}{c_{t+1}}\beta 
+	\alpha A_{t+1}^{1-\alpha} k_{t+1}^{\alpha-1} (T-\ell_{t+1})^{1-\alpha} \label{eq:2b_EE}\\
+	\frac{\theta}{\ell_t} &= \frac{1}{c_{t}} 
+	(1-\alpha) A_t^{1-\alpha} k_t^{\alpha} (T-\ell_t)^{-\alpha} \label{eq:2b_intra}
+\end{align}
+We are asked to show that a constant rate of saving and a constant leisure choice is a solution to this problem. Our strategy will then be to guess that this is the case, and verify that this actually is true. So let's guess the constant savings rate $s$ and constant leisure choice $\ell_t = \ell ~\forall t$. We can then write consumption as
+\begin{equation} \label{eq:2b_cons}
+	c_t = (1-s)A_t^{1-\alpha} k_t^{\alpha} (T-\ell)^{1-\alpha}
+\end{equation}
+Let's start verifying the first first-order condition. Using \eqref{eq:2b_cons} in \eqref{eq:2b_EE} we get 
+\begin{align*}
+	\frac{1}{(1-s)A_t^{1-\alpha} k_t^{\alpha} (T-\ell)^{1-\alpha}} =
+	\frac{\beta \alpha A_{t+1}^{1-\alpha} k_{t+1}^{\alpha-1} (T-\ell)^{1-\alpha}}
+	{(1-s)A_{t+1}^{1-\alpha} k_{t+1}^{\alpha} (T-\ell)^{1-\alpha}}
+\end{align*}
+Tidying up this expression we get, 
+\begin{equation*}
+	\underbrace{\frac{k_{t+1}}{A_t^{1-\alpha} k_t^{\alpha} (T-\ell)^{1-\alpha}}}_{=s} = \alpha \beta
+\end{equation*}
+Hence, we have verified that the constant savings rate $s=\alpha \beta$ is a solution. We can then proceed and verify the second, intratemporal, first-order condition. We use \eqref{eq:2b_cons} in \eqref{eq:2b_intra}:
+\begin{equation*}
+	\frac{\theta}{\ell} = \frac{1-\alpha}{(1-s)(T-\ell)}
+\end{equation*}
+Solving for $\ell$ gives us,
+\begin{equation*}
+	\ell = \frac{\theta(1-s)T}{(1-\alpha) + \theta(1-s)}
+\end{equation*}
+This gives us a constant $\ell$ as a function of only parameters. We have now verified that a constant savings rate and a constant leisure choice is a solution to our problem. 
+\section*{Problem 3 (max 3 points)}
+
+\subsection*{Part (a)}
+A competitive equilibrium is a set of prices $\{r^*, w^*\}$ and a set of quantities $\{k^*, \ell^*, c^*, n^*\}$ such that: 
+\begin{enumerate}
+	\item[\textbf{1.}] $\{c^*, \ell^*\}$ solve the household's problem, 
+	\[
+		\max_{c, \ell} cv(\ell) \qquad \text{s.t. } c = w^*(T-\ell) + r^*k^*	
+	\]
+	\item[\textbf{2.}] $\{k^*, n^*\}$ solve the firm's problem, 
+	\[
+		\max_{k, n} Ak^\alpha n^{1-\alpha} - w^*n - r^*k
+	\]
+	\item[\textbf{3.}] Markets clear,  
+	\begin{align*}
+		c^* &= A(k^*)^\alpha (n^*)^{1-\alpha} & \textit{(goods market)} \\
+		n^* &= T - \ell^* & \textit{(labor market)} \\
+		k^* &= \bar{k} & \textit{(capital market)}
+	\end{align*}
+\end{enumerate}
+
+\subsection*{Part (b)}
+As before, we start out with setting up the Lagrangian for the household's problem. Taking first order conditions then gives us
+\begin{equation}
+	\frac{cv'(\ell)}{v(\ell)} = w \label{eq:3_foc_consumer}
+\end{equation}
+Taking first-order conditions for the firm's problem gives us, 
+\begin{align}
+	r &= \alpha A k^{\alpha -1}n^{1-\alpha} \label{eq:3_r}\\
+	w &= (1-\alpha) A k^{\alpha}n^{-\alpha} \label{eq:3_w}
+\end{align}
+Using \eqref{eq:3_w} and the market clearing condition for the labor market and goods market in \eqref{eq:3_foc_consumer} gives us: 
+\begin{equation}
+	\frac{v'(T-n)}{v(T-n)} = \frac{1-\alpha}{n} \label{eq:3_pin_n}
+\end{equation}
+Equation \eqref{eq:3_pin_n} pins down $n$ if we just knew the functional form of $v(\cdot)$. Let's make it easy and assume $v(\ell)=\ell$. Using this in \eqref{eq:3_pin_n} and solving for $n$ gives, 
+\[
+	n^* = T \lep \frac{1-\alpha}{2-\alpha} \rip
+\]
+We can then use this expression in \eqref{eq:3_r} and \eqref{eq:3_w}, using also the market clearing condition for the capital market and get expressions for $r^*$ and $w^*$ in terms of only primitive parameters, 
+\begin{align*}
+	r^* &= \alpha A \bar{k}^{\alpha-1}\lep \frac{T(1-\alpha)}{(2-\alpha)} \rip^{1-\alpha} \\
+	w^* &= (1-\alpha) A \bar{k}^{\alpha}\lep \frac{T(1-\alpha)}{(2-\alpha)} \rip^{-\alpha} 
+\end{align*}
+Same way we can find $c^*$, 
+\begin{align*}
+	c^* &= A \bar{k}^\alpha \lep \frac{T(1-\alpha)}{2-\alpha} \rip^{1-\alpha} 
+\end{align*}
+And finally we can also find $\ell^*$, 
+\[
+	\ell^* = T - \frac{T(1-\alpha)}{2-\alpha} = T \lep \frac{1}{2-\alpha}\rip
+\]
+For the sake of completeness we should also note that the capital market clearing condition has given us the expression for equilibrium $k^*$ in terms of primitive parameters: 
+\[
+	k^* = \bar{k}
+\]
+
+\subsection*{Part (c)}
+If $A$ doubles, $\{c^*, r^*, w^*\}$ will also double. If we are twice as productive, we will produce twice as much, and hence there will be twice as much goods to consume. Since $r^*$ and $w^*$ are defined as prices relative to the price of goods, which is assumed to be $1$, the household must earn twice as much if it should be able to buy twice as much goods, and the firm can still pay for its workers and capital, since it produces twice as much. 
+
+$\{k^*, \ell^*, n^*\}$ will not be affected. Even though our technology doubles, the capital stock cannot be larger or smaller than it is. Same goes for our labor supply, which in total will not change. The division between labor and leisure will not change either, the income effect and the substitution effect cancel. 
+
+
+\end{document}
