@@ -95,7 +95,7 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 \subsection*{Part (a)}
 
 \begin{itemize}
-\item A \textbf{sequential competitive equilibrium} is a set of sequences for allocations $\left\{a_{1t}^*, c_{1t}^*\right\}_{t=0}^{\infty}$ and $\left\{a_{2t}^*, c_{2t}^*\right\}_{t=0}^{\infty}$ and prices $\left\{q_{t}^*\right\}_{t=0}^{\infty}$ such that 
+\item A \textbf{sequential competitive equilibrium} is a set of sequences for allocations $\left\{a_{1,t+1}^*, c_{1t}^*\right\}_{t=0}^{\infty}$ and $\left\{a_{2,t+1}^*, c_{2t}^*\right\}_{t=0}^{\infty}$ and prices $\left\{q_{t}^*\right\}_{t=0}^{\infty}$ such that 
 	
 	\begin{enumerate}
 		\item $\left\{a_{it}^*, c_{it}^*\right\}_{t=0}^{\infty}$ solves the problem of the household:
@@ -108,7 +108,7 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 		\item Markets clear
 		\begin{align}
 		\sum_{i} c_{it}^*&=\sum_{i} e_{it} \text{ } &\forall t \\
-		\sum_{i} a_{it}^*&=0 \text{ } &\forall t 
+		\sum_{i} a_{i,t+1}^*&=0 \text{ } &\forall t 
 		\end{align}
 	\end{enumerate}
 	
@@ -123,11 +123,11 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 		\item $\left\{c_{it}^*\right\}_{t=0}^{\infty}$ solves the problem of the household:
 		\begin{align}
 		&\max_{\{{c_{it}}\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \text{ for i=1,2}\\
-		&\text{s.t. } \sum_t p_{t} c_{it}=\sum_t p_{t} e_{it} \nonumber 
+		&\text{s.t. } \sum_t p_{t}^* c_{it}=\sum_t p_{t}^* e_{it} \nonumber 
 		\end{align}
 		\item Markets clear
 		\begin{align}
-		\sum_{i} c_{it}^*&=\sum_{i} e_{it}^* \text{ } \forall t
+		\sum_{i} c^*_{it}&=\sum_{i} e_{it} \text{ } \forall t
 		\end{align}
 	\end{enumerate}
 
@@ -156,6 +156,7 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 	\frac{u^\prime(c_{1,t+1})}{u^\prime(c_{1,t})}&=	\frac{u^\prime(c_{2,t+1})}{u^\prime(c_{2,t})} \\
 	\Rightarrow c_{i,t+1}&=c_{i,t}=c_i
 	\end{align}
+	\item TBD: Footnote
 	\item Inserting into \eqref{eq:q} yields 
 	\begin{align}
 	q_t^*=\beta
@@ -163,6 +164,7 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 	\item Now note that the consolidated budget constraint, $\sum_t \left( \beta \right)^t c_{it}=\sum_t \left( \beta \right)^t e_{it}$ for agent 1 reads
 	\begin{align}
 	\sum_t \left( \beta \right)^t c_{1}&=e_h+\left( \beta \right)e_l+\left( \beta \right)^2e_h+\dots \\
+	\sum_t \left( \beta \right)^t c_{1}&=e_h\sum_{t=0}^{\infty} (\beta^2)^t+e_l \beta \sum_{t=0}^{\infty} (\beta^2)^t\\
 	c_{1}\frac{1}{1-\beta}&=e_h\frac{1}{1-\beta^2}+e_l\beta\frac{1}{1-\beta^2}
 	\end{align}
 \item And for agent 2
@@ -172,11 +174,12 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 	\end{align}
 	\item Hence,
 		\begin{align}
-		c_{1}=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2} \\
-		c_{2}=e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{\beta(1-\beta)}{1-\beta^2} 
+		c_{1}=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}=\frac{e_h}{1+\beta}+\frac{\beta e_l}{1+\beta} \\
+		c_{2}=e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{\beta(1-\beta)}{1-\beta^2}=\frac{e_l}{1+\beta}+\frac{\beta e_h}{1+\beta} 
 		\end{align}
 	
 	\item Verify that this indeed is an equilibrium by checking whether $c_1$ and $c_2$ sum to $e_h+e_l$.
+	\item TBD: Simplify
 	
 	\begin{align}
 	c_1+c_2&=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}+e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{\beta(1-\beta)}{1-\beta^2} \nonumber \\
@@ -257,7 +260,7 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 c_1-c_2=\left(e_h-e_l \right) \left( \frac{1-\beta}{1-\beta^2}-\frac{\beta(1-\beta)}{1-\beta^2} \right)=\left(e_h-e_l \right)\frac{(1-\beta)^2}{1-\beta^2}>0
 \end{align}
 
-\item Thus, consumption of agent 1 $>$ consumption of agent 2, and this difference is decreasing $\beta$. Reason is that agent 1 gets high endowment before agent 2, which (owing to discounting) makes agent 1 richer in present value terms. 
+\item Thus, consumption of agent 1 $>$ consumption of agent 2, and this difference is decreasing in $\beta$. Reason is that agent 1 gets high endowment before agent 2, which (owing to discounting) makes agent 1 richer in present value terms. 
 
 \eit
 
@@ -293,7 +296,7 @@ c_1-c_2=\left(e_h-e_l \right) \left( \frac{1-\beta}{1-\beta^2}-\frac{\beta(1-\be
 
 \begin{align}
 c_{2,t=odd}=2e_h-c_1=e_h\frac{2-\beta^2-\beta}{1-\beta^2}-e_l\frac{1-\beta}{1-\beta^2} \\
-c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2*\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1-\beta)}{1-\beta^2}
+c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1-\beta)}{1-\beta^2}
 \end{align}
 
 \end{itemize}
@@ -315,7 +318,7 @@ c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2*\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1
 \begin{itemize}
 	\item A \textbf{sequential equilibrium} is a set of sequences for allocations $\left\{ k_{it}^*, k_{ct}^*, k_{t}^*, n_{it}^*, n_{ct}^*, c_{t}^*, i_{t}^* \right\}_{t=0}^{\infty}$ and prices $\left\{ p_t^*, r^*_t, w^*_t  \right\}_{t=0}^{\infty}$ such that:
 	\begin{enumerate}
-		\item $\left\{c_{t}^*, i_{t}^*, k_{t}^*  \right\}_{t=0}^{\infty}$ solves the household's problem:
+		\item $\left\{c_{t}^*, i_{t}^*, k_{t+1}^*  \right\}_{t=0}^{\infty}$ solves the household's problem:
 		\begin{align}
 		&\max_{\{{c_t, i_t}\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \\
 		&\text{s.t. } \nonumber \\
@@ -323,16 +326,16 @@ c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2*\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1
 		&k_{t+1}=(1-\delta)k_t+i_t \label{eq:kacc} \nonumber
 		\end{align}
 		
-	\item $\left\{k_{ct}^*, k_{ct}^*  \right\}_{t=0}^{\infty}$ solves problem of consumption good firm:
+	\item $\left\{k_{ct}^*, n_{ct}^*  \right\}_{t=0}^{\infty}$ solves problem of consumption good firm:
 	
 		\begin{align}
-		&\max_{k_{ct}, n_{ct}} {A_t^{1-\alpha}k_{ct}^\alpha n_{ct}^{\alpha}-r_t^* k_{ct}-w_{t}^* n_{ct}} \text{ }\forall t
+		&\max_{k_{ct}, n_{ct}} {A_t^{1-\alpha}k_{ct}^\alpha n_{ct}^{1-\alpha}-r_t^* k_{ct}-w_{t}^* n_{ct}} \text{ }\forall t
 		\end{align}
 		
-	\item $\left\{k_{it}^*, k_{it}^*  \right\}_{t=0}^{\infty}$ solves problem of the investment good firm:
+	\item $\left\{k_{it}^*, n_{it}^*  \right\}_{t=0}^{\infty}$ solves problem of the investment good firm:
 	
 		\begin{align}
-		&\max_{k_{it}, n_{it}} {p_t q_t A_t^{1-\alpha}k_{it}^\alpha n_{it}^{\alpha}-r_t^* k_{it}-w_{t}^* n_{it}} \text{ }\forall t
+		&\max_{k_{it}, n_{it}} {p_t q_t A_t^{1-\alpha}k_{it}^\alpha n_{it}^{1-\alpha}-r_t^* k_{it}-w_{t}^* n_{it}} \text{ }\forall t
 		\end{align}
 		
 		\item And market clearing (feasibility) holds
@@ -340,8 +343,8 @@ c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2*\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1
 		\begin{align}
 		n^*_{it}+n^*_{ct}=n^*_{t} \label{eq:nclearing} \\
 		k^*_{it}+k^*_{ct}=k^*_{t} \label{eq:kclearing} \\
-		c^*_t=A_t^{1-\alpha}k^*_{ct}^\alpha n^*_{ct}^{\alpha} \\
-		i^*_t=q^*_t A_t^{1-\alpha}k^*_{it}^\alpha n^*_{it}^{\alpha}
+		c^*_t=A_t^{1-\alpha}k^*_{ct}^\alpha n^*_{ct}^{1-\alpha} \\
+		i^*_t=q^*_t A_t^{1-\alpha}k^*_{it}^\alpha n^*_{it}^{1-\alpha}
 		\end{align}
 		
 	\end{enumerate}
@@ -417,7 +420,7 @@ w_t^*&=(1-\alpha) A_t ^{1-\alpha} \left( s k_{t} \right)^{\alpha} \left( s  n_{t
 \item Hence, the problem of the social planner can be written 
 		
 		\begin{align}
-		&\max_{\{{c_t^*,i_t^* }\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \\
+		&\max_{\{{c_t^*,i_t^*, k_{t+1}^* }\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \\
 		&\text{s.t. } \nonumber \\
 		&c_t+\frac{1}{q_t} i_t=A_t^{1-\alpha} k_t^{\alpha} n_t^{1-\alpha} \nonumber \\
 		&k_{t+1}=(1-\delta)k_t+i_t \nonumber
@@ -425,7 +428,7 @@ w_t^*&=(1-\alpha) A_t ^{1-\alpha} \left( s k_{t} \right)^{\alpha} \left( s  n_{t
 	
 	\subsubsection*{Intuition}
 	
-\item Notice that we have shown that the economy \emph{aggregates}. That is, we started with a disaggreated economy with two sectors with each their production functions. But we have shown that this economy can be represented by one production function (as long as we also correct the price of the investment good by $q_t$ - which can be thought of as the relative productivity of the investment good sector). Also notice that this result was independent of the use of preferences : the result was simply derived from the firms first order conditions.
+\item Notice that we have shown that the economy \emph{aggregates}. That is, we started with a disaggreated economy with two sectors,  each having a separate production function. But we have shown that this economy can be represented by one production function (as long as we also correct the price of the investment good by $q_t$ - which can be thought of as the relative productivity of the investment good sector). Also notice that this result was independent of the use of preferences : the result was simply derived from the firms first order conditions.
 
 \item This result is important because it hints at something more general: That we often can represent an economy with many different sectors by \emph{one} aggregate production function.
 	
