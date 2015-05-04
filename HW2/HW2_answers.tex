@@ -107,8 +107,8 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 		\end{align}
 		\item Markets clear
 		\begin{align}
-		\sum_{i} c_{it}^*&=\sum_{i} e_{it} \text{ } &\forall t \\
-		\sum_{i} a_{i,t+1}^*&=0 \text{ } &\forall t 
+		\sum_{i=1}^{2} c_{it}^*&=\sum_{i=1}^{2} e_{it} \text{ } &\forall t \\
+		\sum_{i=1}^{2} a_{i,t+1}^*&=0 \text{ } &\forall t 
 		\end{align}
 	\end{enumerate}
 	
@@ -123,11 +123,11 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 		\item $\left\{c_{it}^*\right\}_{t=0}^{\infty}$ solves the problem of the household:
 		\begin{align}
 		&\max_{\{{c_{it}}\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \text{ for i=1,2}\\
-		&\text{s.t. } \sum_t p_{t}^* c_{it}=\sum_t p_{t}^* e_{it} \nonumber 
+		&\text{s.t. } \sum_{t=0}^{\infty} p_{t}^* c_{it}=\sum_{t=0}^{\infty} p_{t}^* e_{it} \nonumber 
 		\end{align}
 		\item Markets clear
 		\begin{align}
-		\sum_{i} c^*_{it}&=\sum_{i} e_{it} \text{ } \forall t
+		\sum_{i=1}^{2} c^*_{it}&=\sum_{i=1}^{2} e_{it} \text{ } \forall t
 		\end{align}
 	\end{enumerate}
 
@@ -140,7 +140,7 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 \begin{itemize}
 	\item The Lagrangean for the household problem reads
 	\begin{align}
-	L=\sum_{t} \beta^t u_{i} (c_{it})+\sum_t \lambda_{it} \left( c_{it}+q_t a_{i,t+1}-e_{it}-a_{it}\right)
+	\mathcal{L}=\sum_{t=0}^{\infty} \beta^t u_{i} (c_{it})+\sum_{t=0}^{\infty} \lambda_{it} \left( c_{it}+q_t a_{i,t+1}-e_{it}-a_{it}\right)
 	\end{align}
 	\item The first order conditions become
 	\begin{align}
@@ -151,12 +151,12 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 	\begin{align}
 	\frac{q_t}{\beta}=\frac{u^\prime(c_{i,t+1})}{u^\prime(c_{i,t})} \text{ } \forall i,t \label{eq:q}
 	\end{align}
-	\item This implies 
+	\item This implies\footnote{To see the first step notice that if $u^\prime( c_{1,t+1})>u^\prime( c_{1,t})$ would imply $u^\prime( c_{2,t+1})>u^\prime( c_{2,t})$ why $c_{1,t+1}+c_{2,t+1}<c_{1,t+1}+c_{2,t+1}$. This would be inconsistent with market clearing. Reversed argument can be applied if $u^\prime( c_{1,t+1})<u^\prime( c_{1,t})$}
 	\begin{align}
 	\frac{u^\prime(c_{1,t+1})}{u^\prime(c_{1,t})}&=	\frac{u^\prime(c_{2,t+1})}{u^\prime(c_{2,t})} \\
+	\Rightarrow u^\prime( c_{i,t+1})&=u^\prime( c_{i,t+1}) \\
 	\Rightarrow c_{i,t+1}&=c_{i,t}=c_i
 	\end{align}
-	\item TBD: Footnote
 	\item Inserting into \eqref{eq:q} yields 
 	\begin{align}
 	q_t^*=\beta
@@ -170,21 +170,18 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 \item And for agent 2
 	\begin{align}
 	\sum_t \left( \beta \right)^t c_{2}&=e_l+\left( \beta \right)e_h+\left( \beta \right)^2e_l+\dots \\
+	\sum_t \left( \beta \right)^t c_{1}&=e_l\sum_{t=0}^{\infty} (\beta^2)^t+e_h \beta \sum_{t=0}^{\infty} (\beta^2)^t\\
 	c_{2}\frac{1}{1-\beta}&=e_l\frac{1}{1-\beta^2}+e_h\beta\frac{1}{1-\beta^2}
 	\end{align}
-	\item Hence,
+	\item Hence\footnote{To see second equality notice $(1+\beta)(1-\beta)$}
 		\begin{align}
 		c_{1}=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}=\frac{e_h}{1+\beta}+\frac{\beta e_l}{1+\beta} \\
 		c_{2}=e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{\beta(1-\beta)}{1-\beta^2}=\frac{e_l}{1+\beta}+\frac{\beta e_h}{1+\beta} 
 		\end{align}
 	
 	\item Verify that this indeed is an equilibrium by checking whether $c_1$ and $c_2$ sum to $e_h+e_l$.
-	\item TBD: Simplify
-	
 	\begin{align}
-	c_1+c_2&=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}+e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{\beta(1-\beta)}{1-\beta^2} \nonumber \\
-	&= e_h \frac{1-\beta+\beta(1-\beta)}{1-\beta^2}+e_l \frac{1-\beta+\beta(1-\beta)}{1-\beta^2} \nonumber \\
-	&=e_h+e_l
+		c_1+c_2&=\frac{e_h}{1+\beta}+\frac{\beta e_l}{1+\beta}+\frac{e_l}{1+\beta}+\frac{\beta e_h}{1+\beta} ) e_h+e_l
 	\end{align}
 		
 \end{itemize}
@@ -238,14 +235,15 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 	\item Let $p_0=1$ (numeraire) and use this in the budget constraint of the consumer to get
 	
 	\begin{align}
-	&c_1 \sum_t \beta^t= e_h (1+\beta^2+\beta^4+...)+ \beta e_l (1+\beta^2+\beta^4+...) \nonumber \\
-	&\frac{c_1}{1-\beta}=\frac{e_h}{1-\beta^2}+\frac{\beta e_l}{1-\beta^2} \nonumber \\
-	&c_{1}=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}
+	&c_1 \sum_t \beta^t= e_h (1+\beta^2+\beta^4+...)+ \beta e_l (1+\beta^2+\beta^4+...)  \\
+	\Rightarrow &\frac{c_1}{1-\beta}=\frac{e_h}{1-\beta^2}+\frac{\beta e_l}{1-\beta^2}  \\
+	\Rightarrow &c_{1}=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}  \\
+	\Rightarrow &c_{1}=e_h \frac{1}{1+\beta}+e_l \frac{\beta}{1+\beta}
 	\end{align}
 	
 	\item And likewise
 	\begin{align}
-	&c_{2}=e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{\beta(1-\beta)}{1-\beta^2}
+	&c_{2}=e_l \frac{1}{1+\beta}+e_h \frac{\beta}{1+\beta}
 	\end{align}
 	
 	\end{itemize}
@@ -255,12 +253,11 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 \bit
 
 \item Notice:
-
 \begin{align}
-c_1-c_2=\left(e_h-e_l \right) \left( \frac{1-\beta}{1-\beta^2}-\frac{\beta(1-\beta)}{1-\beta^2} \right)=\left(e_h-e_l \right)\frac{(1-\beta)^2}{1-\beta^2}>0
+c_1-c_2=\left( e_h-e_l\right)\frac{1-\beta}{1+\beta}
 \end{align}
 
-\item Thus, consumption of agent 1 $>$ consumption of agent 2, and this difference is decreasing in $\beta$. Reason is that agent 1 gets high endowment before agent 2, which (owing to discounting) makes agent 1 richer in present value terms. 
+\item Thus, consumption of agent 1 $>$ consumption of agent 2, and this difference is decreasing in $\beta$. Reason is that agent 1 gets high endowment before agent 2, which (owing to discounting) makes agent 1 richer in present value terms. When $\beta$ increases agents discount future less, why the difference in consumption becomes smaller.
 
 \eit
 
@@ -343,8 +340,8 @@ c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1-
 		\begin{align}
 		n^*_{it}+n^*_{ct}=n^*_{t} \label{eq:nclearing} \\
 		k^*_{it}+k^*_{ct}=k^*_{t} \label{eq:kclearing} \\
-		c^*_t=A_t^{1-\alpha}k^*_{ct}^\alpha n^*_{ct}^{1-\alpha} \\
-		i^*_t=q^*_t A_t^{1-\alpha}k^*_{it}^\alpha n^*_{it}^{1-\alpha}
+		c^*_{t}=A_t^{1-\alpha}k^{* \alpha}_{ct} n_{ct}^{* 1-\alpha} \\
+		%i^*_t=q^*_t A_t^{1-\alpha}k^*_{it}^\alpha n^*_{it}^{1-\alpha}
 		\end{align}
 		
 	\end{enumerate}
