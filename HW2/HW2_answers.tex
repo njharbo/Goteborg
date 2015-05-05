@@ -22,7 +22,7 @@
 \usepackage{fancyhdr}
 \usepackage[colorlinks=true, hidelinks]{hyperref}
 \usepackage[tmargin=1.1in,bmargin=1.1in,lmargin=1.45in,rmargin=1.45in]{geometry}
-
+\usepackage{datetime}
 %% User defined commands
 \newcommand{\ra}[1]{\renewcommand{\arraystretch}{#1}}
 	% Integrals
@@ -83,10 +83,11 @@
 \title{Macroeconomics I}
 \subtitle{Homework 2 - Suggested solutions}
 \author{Niels-Jakob Harbo Hansen}
+\date{\texttt{This version: \today \text{ at} \currenttime}}
 \maketitle
 
 \section*{Introduction}
-If you find any errors or unclear sections in those answers, please help me and your classmates by emailing me at Niels-Jakob Harbo Hansen at \url{nielsjakobharbo.hansen@iies.su.se} or Jonna Olsson \url{jonna.olsson@ne.su.se},. Please also send any of us an email if you have other questions! 
+If you find any errors or unclear sections in those answers, please help me and your classmates by emailing me at Niels-Jakob Harbo Hansen at \url{nielsjakobharbo.hansen@iies.su.se} or Jonna Olsson \url{jonna.olsson@ne.su.se}. Then we will update the document. Please also send any of us an email if you have other questions! 
 
 Your homeworks will be handed back in the next seminar. If you want to get feed-back earlier, just send me an email. 
 
@@ -154,34 +155,32 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 	\item This implies\footnote{To see the first step notice that if $u^\prime( c_{1,t+1})>u^\prime( c_{1,t})$ would imply $u^\prime( c_{2,t+1})>u^\prime( c_{2,t})$ why $c_{1,t+1}+c_{2,t+1}<c_{1,t+1}+c_{2,t+1}$. This would be inconsistent with market clearing. Reversed argument can be applied if $u^\prime( c_{1,t+1})<u^\prime( c_{1,t})$}
 	\begin{align}
 	\frac{u^\prime(c_{1,t+1})}{u^\prime(c_{1,t})}&=	\frac{u^\prime(c_{2,t+1})}{u^\prime(c_{2,t})} \\
-	\Rightarrow u^\prime( c_{i,t+1})&=u^\prime( c_{i,t+1}) \\
-	\Rightarrow c_{i,t+1}&=c_{i,t}=c_i
+	\Rightarrow u^\prime( c_{i,t+1})&=u^\prime( c_{i,t+1})  \\
+	\Rightarrow c_{i,t+1}&=c_{i,t}=c_i \text{ } \forall t
 	\end{align}
 	\item Inserting into \eqref{eq:q} yields 
 	\begin{align}
 	q_t^*=\beta
 	\end{align}
-	\item Now note that the consolidated budget constraint, $\sum_t \left( \beta \right)^t c_{it}=\sum_t \left( \beta \right)^t e_{it}$ for agent 1 reads
+	\item Now note that the consolidated budget constraint, $\sum_t \left( \beta \right)^t c_{it}=\sum_t \left( \beta \right)^t e_{it}$ for agent 1 reads\footnote{To see first line remember that zero is an \emph{even} number :). To see fourth implication sign notice $(1+\beta)(1-\beta)=1-\beta^2$}	
+		\begin{align}
+	\sum_t \left( \beta \right)^t c_{1}&=e_l+\left( \beta \right)e_h+\left( \beta \right)^2e_l+\dots \\
+\Rightarrow \sum_t \left( \beta \right)^t c_{1}&=e_l\sum_{t=0}^{\infty} (\beta^2)^t+e_h \beta \sum_{t=0}^{\infty} (\beta^2)^t\\
+\Rightarrow	c_{1}\frac{1}{1-\beta}&=e_l\frac{1}{1-\beta^2}+e_h\beta\frac{1}{1-\beta^2} \\
+\Rightarrow c_{1}&=e_l\frac{1}{1+\beta}+e_h\frac{\beta}{1+\beta} 
+	\end{align}
+\item Similar computations for agent 2 yields
 	\begin{align}
 	\sum_t \left( \beta \right)^t c_{1}&=e_h+\left( \beta \right)e_l+\left( \beta \right)^2e_h+\dots \\
-	\sum_t \left( \beta \right)^t c_{1}&=e_h\sum_{t=0}^{\infty} (\beta^2)^t+e_l \beta \sum_{t=0}^{\infty} (\beta^2)^t\\
-	c_{1}\frac{1}{1-\beta}&=e_h\frac{1}{1-\beta^2}+e_l\beta\frac{1}{1-\beta^2}
+	\Rightarrow 	\sum_t \left( \beta \right)^t c_{1}&=e_h\sum_{t=0}^{\infty} (\beta^2)^t+e_l \beta \sum_{t=0}^{\infty} (\beta^2)^t\\
+	\Rightarrow 	c_{1}\frac{1}{1-\beta}&=e_h\frac{1}{1-\beta^2}+e_l\beta\frac{1}{1-\beta^2} \\
+	\Rightarrow c_{2}&=e_h\frac{1}{1+\beta}+e_l\frac{\beta}{1+\beta} 
 	\end{align}
-\item And for agent 2
-	\begin{align}
-	\sum_t \left( \beta \right)^t c_{2}&=e_l+\left( \beta \right)e_h+\left( \beta \right)^2e_l+\dots \\
-	\sum_t \left( \beta \right)^t c_{1}&=e_l\sum_{t=0}^{\infty} (\beta^2)^t+e_h \beta \sum_{t=0}^{\infty} (\beta^2)^t\\
-	c_{2}\frac{1}{1-\beta}&=e_l\frac{1}{1-\beta^2}+e_h\beta\frac{1}{1-\beta^2}
-	\end{align}
-	\item Hence\footnote{To see second equality notice $(1+\beta)(1-\beta)$}
-		\begin{align}
-		c_{1}=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}=\frac{e_h}{1+\beta}+\frac{\beta e_l}{1+\beta} \\
-		c_{2}=e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{\beta(1-\beta)}{1-\beta^2}=\frac{e_l}{1+\beta}+\frac{\beta e_h}{1+\beta} 
-		\end{align}
+
 	
 	\item Verify that this indeed is an equilibrium by checking whether $c_1$ and $c_2$ sum to $e_h+e_l$.
 	\begin{align}
-		c_1+c_2&=\frac{e_h}{1+\beta}+\frac{\beta e_l}{1+\beta}+\frac{e_l}{1+\beta}+\frac{\beta e_h}{1+\beta} ) e_h+e_l
+		c_1+c_2&=\frac{e_l}{1+\beta}+\frac{\beta e_h}{1+\beta}+\frac{e_h}{1+\beta}+\frac{\beta e_l}{1+\beta} = e_h+e_l
 	\end{align}
 		
 \end{itemize}
@@ -192,7 +191,7 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 	\item The Lagrangean reads
 	
 		\begin{align}
-	L=\sum_{t} \beta^t u_{i} (c_{it})+ \lambda_{i} \sum_t \left( p_t c_{it}-p_t e_{it}\right)
+	L=\sum_{t=0}^{\infty}  \beta^t u_{i} (c_{it})+ \lambda_{i} \sum_{t=0}^{\infty} \left( p_t c_{it}-p_t e_{it}\right)
 	\end{align}
 	
 	\item Yields the first order condtions
@@ -217,10 +216,9 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 	\end{align}
 	
 	\item Now use this in agent 1's budget constraint:
-	
 	\begin{align}
-	c_1 \sum_t p_t &= \sum_t p_t e_{1}  \\
-	c_1 \left( p_0+ p_1 + p_2 + ... \right) &= \left( e_h p_0+ e_l p_1 + e_h p_2 + ... \right)
+	c_1 \sum_{t=0}^{\infty}  p_t &= \sum_{t=0}^{\infty}  p_t e_{1}  \\
+	c_1 \left( p_0+ p_1 + p_2 + ... \right) &= \left( e_l p_0+ e_h p_1 + e_l p_2 + ... \right)
 	\end{align}
 	
 	\item And notice
@@ -235,15 +233,15 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 	\item Let $p_0=1$ (numeraire) and use this in the budget constraint of the consumer to get
 	
 	\begin{align}
-	&c_1 \sum_t \beta^t= e_h (1+\beta^2+\beta^4+...)+ \beta e_l (1+\beta^2+\beta^4+...)  \\
-	\Rightarrow &\frac{c_1}{1-\beta}=\frac{e_h}{1-\beta^2}+\frac{\beta e_l}{1-\beta^2}  \\
-	\Rightarrow &c_{1}=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}  \\
-	\Rightarrow &c_{1}=e_h \frac{1}{1+\beta}+e_l \frac{\beta}{1+\beta}
+	c_1 \sum_t \beta^t&= e_l (1+\beta^2+\beta^4+...)+ \beta e_h (1+\beta^2+\beta^4+...)  \\
+	%\Rightarrow &\frac{c_1}{1-\beta}=\frac{e_h}{1-\beta^2}+\frac{\beta e_l}{1-\beta^2}  \\
+	%\Rightarrow &c_{1}=e_h\frac{1-\beta}{1-\beta^2}+e_l\frac{\beta(1-\beta)}{1-\beta^2}  \\
+	\Rightarrow c_{1}&=e_l \frac{1}{1+\beta}+e_h \frac{\beta}{1+\beta}
 	\end{align}
 	
 	\item And likewise
 	\begin{align}
-	&c_{2}=e_l \frac{1}{1+\beta}+e_h \frac{\beta}{1+\beta}
+	c_{2}&=e_h \frac{1}{1+\beta}+e_l \frac{\beta}{1+\beta}
 	\end{align}
 	
 	\end{itemize}
@@ -254,10 +252,10 @@ Your homeworks will be handed back in the next seminar. If you want to get feed-
 
 \item Notice:
 \begin{align}
-c_1-c_2=\left( e_h-e_l\right)\frac{1-\beta}{1+\beta}
+c_1-c_2=\left( e_l-e_h\right)\frac{1-\beta}{1+\beta} \leq 0
 \end{align}
 
-\item Thus, consumption of agent 1 $>$ consumption of agent 2, and this difference is decreasing in $\beta$. Reason is that agent 1 gets high endowment before agent 2, which (owing to discounting) makes agent 1 richer in present value terms. When $\beta$ increases agents discount future less, why the difference in consumption becomes smaller.
+\item Thus, consumption of agent 1 $<$ consumption of agent 2, and this difference is decreasing in $\beta$. Reason is that agent 2 gets high endowment before agent 1, which (owing to discounting) makes agent 2 richer in present value terms. When $\beta$ increases agents discount future less, why the difference in consumption becomes smaller.
 
 \eit
 
@@ -280,20 +278,21 @@ c_1-c_2=\left( e_h-e_l\right)\frac{1-\beta}{1+\beta}
 \item Now the consolidated budget constraint of each agent reads
 
 \begin{align}
-\sum_t \beta^t c_{i,t}= e_l+\beta e_h+ \beta^2 e_l+...\\
-\sum_t \beta^t c_{i,t}=\frac{e_l}{1-\beta^2}+\frac{e_h \beta}{1-\beta^2}
+\sum_t \beta^t c_{i,t}&= e_l+\beta e_h+ \beta^2 e_l+...\\
+\Rightarrow \sum_t \beta^t c_{i,t}&= \sum_{t=0}^{\infty} \beta ^{2t} e_l+\sum_{t=0}^{\infty} \beta ^{2t} \beta e_h \\
+\Rightarrow \sum_t \beta^t c_{i,t}&=\frac{e_l}{1-\beta^2}+\frac{e_h \beta}{1-\beta^2}
 \end{align}
 
 \item For agent 1 this implies
 \begin{align}
-\frac{c_1}{1-\beta}=\frac{e_l}{1-\beta^2}+\frac{e_h \beta}{1-\beta^2} \Rightarrow c_1=e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{ \beta(1-\beta)}{1-\beta^2}
+\frac{c_1}{1-\beta}=\frac{e_l}{1-\beta^2}+\frac{e_h \beta}{1-\beta^2} \\\Rightarrow c_1=e_l\frac{1-\beta}{1-\beta^2}+e_h\frac{ \beta(1-\beta)}{1-\beta^2} \\
+\Rightarrow c_1=e_l\frac{1}{1+\beta}+e_h\frac{\beta}{1+\beta}
 \end{align}
 
 \item Via market clearing this then implies
-
 \begin{align}
-c_{2,t=odd}=2e_h-c_1=e_h\frac{2-\beta^2-\beta}{1-\beta^2}-e_l\frac{1-\beta}{1-\beta^2} \\
-c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1-\beta)}{1-\beta^2}
+c_{2,t=odd}=2e_h-c_1=e_h\frac{2+\beta}{1+\beta}-e_l\frac{1}{1+\beta} \\
+c_{2,t=even}=2e_l-c_1 = e_l\frac{2(1+\beta)-1}{1+\beta}-e_h\frac{1}{1+\beta}
 \end{align}
 
 \end{itemize}
@@ -304,7 +303,7 @@ c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1-
 
 \item Notice $c_{1,t=even}=c_{1,t=odd}$ while $c_{2,t=even}<c_{1,t=odd}$, while the present value of consumption of agent 1 equals that of agent 2. 
 
-\item This ows to the fact that agent 1 preferences are such that he/she dislikes consumption variation more than agent 2. Hence, agent 2 will insure agent 1 by taking all the variation in aggregate income.
+\item This owes to the fact that agent 1 preferences are such that he/she dislikes consumption variation more than agent 2. Hence, agent 2 will insure agent 1 by taking all the variation in aggregate income.
 
 \eit
 
@@ -317,7 +316,7 @@ c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1-
 	\begin{enumerate}
 		\item $\left\{c_{t}^*, i_{t}^*, k_{t+1}^*  \right\}_{t=0}^{\infty}$ solves the household's problem:
 		\begin{align}
-		&\max_{\{{c_t, i_t}\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \\
+		&\max_{\{{c_t, i_t, k_{t+1}}\}_{t=0}^{\infty}} {\sum_{t=0}^{\infty} \beta^t u(c_t)} \\
 		&\text{s.t. } \nonumber \\
 		&c_t+p_t^* i_t=r^*_t k_t+w_t^* n_t \nonumber \\
 		&k_{t+1}=(1-\delta)k_t+i_t \label{eq:kacc} \nonumber
@@ -341,7 +340,7 @@ c_{2,t=even}=2e_l-c_1 =e_l \frac{1-2\beta^2+\beta}{1-\beta^2}-e_h\frac{ \beta(1-
 		n^*_{it}+n^*_{ct}=n^*_{t} \label{eq:nclearing} \\
 		k^*_{it}+k^*_{ct}=k^*_{t} \label{eq:kclearing} \\
 		c^*_{t}=A_t^{1-\alpha}k^{* \alpha}_{ct} n_{ct}^{* 1-\alpha} \\
-		%i^*_t=q^*_t A_t^{1-\alpha}k^*_{it}^\alpha n^*_{it}^{1-\alpha}
+		i^*_t=q_t A_t^{*1-\alpha}k_{it}^{*\alpha} n_{it}^{* 1-\alpha}
 		\end{align}
 		
 	\end{enumerate}
@@ -399,19 +398,19 @@ n_{ct}&=(1-s)n_{t}
 \begin{align}
 r_t^*&=\alpha A_t^{1-\alpha} \left( s k_t \right)^{\alpha-1} \left( s n_t \right)^{1-\alpha} \nonumber \\
 \Rightarrow r_t^*&= s^{\alpha-1+1-\alpha} \alpha A_t^{1-\alpha}  k_t ^{\alpha-1} n_t^{1-\alpha} \nonumber \\
-\Rightarrow r_t^*&= s^{0} \alpha A_t^{1-\alpha}  k_t ^{\alpha-1} n_t^{1-\alpha} \label{eq:r} 
+\Rightarrow r_t^*&= \underbrace{s^{0}}_{=1} \alpha A_t^{1-\alpha}  k_t ^{\alpha-1} n_t^{1-\alpha} \label{eq:r} 
 \end{align}
 
 \item Use this in \eqref{eq:foc2} to get an expression for $w_t$ 
 \begin{align}
 w_t^*&=(1-\alpha) A_t ^{1-\alpha} \left( s k_{t} \right)^{\alpha} \left( s  n_{t} \right)^{-\alpha} \nonumber \\
-\Rightarrow w_t^*&=s^{0} (1-\alpha) A_t ^{1-\alpha} k_{t}^{\alpha}   n_{t} ^{-\alpha} \label{eq:w}
+\Rightarrow w_t^*&=\underbrace{s^{0}}_{=1} (1-\alpha) A_t ^{1-\alpha} k_{t}^{\alpha}   n_{t} ^{-\alpha} \label{eq:w}
 \end{align}
 
 	\item Then plug \eqref{eq:r} and \eqref{eq:w} along \eqref{eq:pq} with  into the budget constraint of the household to get
 	\begin{align}
 	c_t+\frac{1}{q_t} i_t&=\alpha A_t^{1-\alpha}  k_t ^{\alpha-1} n_t^{1-\alpha} k_t+  (1-\alpha) A_t ^{1-\alpha} k_{t}^{\alpha}   n_{t} ^{-\alpha} n_t \nonumber \\
-	\Rightarrow c_t+\frac{1}{q_t} i_t&= A_t^{1-\alpha}  k_t ^{\alpha} n_t^{1-\alpha} \\
+	\Rightarrow c_t+\frac{1}{q_t} i_t&= A_t^{1-\alpha}  k_t ^{\alpha} n_t^{1-\alpha} 
 	\end{align}
 	
 \item Hence, the problem of the social planner can be written 
@@ -427,7 +426,7 @@ w_t^*&=(1-\alpha) A_t ^{1-\alpha} \left( s k_{t} \right)^{\alpha} \left( s  n_{t
 	
 \item Notice that we have shown that the economy \emph{aggregates}. That is, we started with a disaggreated economy with two sectors,  each having a separate production function. But we have shown that this economy can be represented by one production function (as long as we also correct the price of the investment good by $q_t$ - which can be thought of as the relative productivity of the investment good sector). Also notice that this result was independent of the use of preferences : the result was simply derived from the firms first order conditions.
 
-\item This result is important because it hints at something more general: That we often can represent an economy with many different sectors by \emph{one} aggregate production function.
+\item This result is important because it hints at something more general: Under some conditions we can represent an economy with different sectors by \emph{one} aggregate production function.
 	
 \end{itemize}
 
